@@ -13,6 +13,19 @@ toggleBtn.addEventListener("click", () => {
   localStorage.setItem("theme", dark ? "dark" : "light");
 });
 
+const burger = document.querySelector(".burger");
+const navMenu = document.querySelector("nav ul");
+
+burger.addEventListener("click", () => {
+  navMenu.classList.toggle("active");
+});
+
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 768) {
+    navMenu.classList.remove("active");
+  }
+});
+
 const titleText = "Hello, I'm Xavier";
 const titleElement = document.getElementById("jump-title");
 titleElement.classList.add("jump");
@@ -25,6 +38,19 @@ if (!titleElement.innerHTML.trim()) {
     titleElement.appendChild(span);
   });
 }
+
+const welcomeText = "Welcome to my portfolio!";
+const welcomeElement = document.getElementById("Welcome-title");
+welcomeElement.classList.add("flip");
+welcomeElement.textContent = "";
+
+welcomeText.split("").forEach((char, i) => {
+  const span = document.createElement("span");
+  span.textContent = char === " " ? "\u00A0" : char;
+  span.style.animationDelay = `${i * 0.08}s`;
+  welcomeElement.appendChild(span);
+});
+
 
 const revealElements = document.querySelectorAll(".reveal-right");
 const observerReveal = new IntersectionObserver(entries => {
@@ -53,15 +79,3 @@ const observerProjects = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.3 });
 projectCards.forEach(card => observerProjects.observe(card));
-
-const welcomeText = "Welcome to my portfolio!";
-const welcomeElement = document.getElementById("Welcome-title");
-welcomeElement.classList.add("flip");
-welcomeElement.textContent = "";
-
-welcomeText.split("").forEach((char, i) => {
-  const span = document.createElement("span");
-  span.textContent = char === " " ? "\u00A0" : char;
-  span.style.animationDelay = `${i * 0.08}s`;
-  welcomeElement.appendChild(span);
-});
