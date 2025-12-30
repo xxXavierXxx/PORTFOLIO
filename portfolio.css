@@ -211,6 +211,16 @@ nav a:hover::after {
   transform: translateX(0);
   opacity: 1;
 }
+.reveal-right {
+  opacity: 0;
+  transform: translateX(80px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal-right.active {
+  opacity: 1;
+  transform: translateX(0);
+}
 
 .jump span {
   display: inline-block;
