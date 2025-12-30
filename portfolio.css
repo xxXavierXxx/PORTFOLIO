@@ -71,7 +71,17 @@ nav a {
   position: relative;
   white-space: nowrap;
 }
+.github-icon {
+  font-size: 2rem;
+  color: var(--text-color);
+  transition: transform 0.3s, color 0.3s;
+}
 
+.github-icon:hover {
+  color: var(--accent-color);
+  transform: scale(1.2);
+}
+  
 nav a::after {
   content: "";
   position: absolute;
